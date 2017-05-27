@@ -1,60 +1,61 @@
 ALTER SESSION SET "_Oracle_script" = true;
+set serveroutput on;
 
 ----------CREATE TABLE
 CREATE TABLE Employee_1412105
 (
-    EmployeeID CHAR(15) PRIMARY KEY,
-    EmployeeName varchar2(50),
-    EmployeeAddress varchar2(100),
+    EmployeeID VARCHAR(15) PRIMARY KEY,
+    EmployeeName VARCHAR2(50),
+    EmployeeAddress VARCHAR2(100),
     PhoneNumber VARCHAR(20),
     Email VARCHAR(50),
-    Department CHAR(4),
-    Branch CHAR(3),
-    Salary INT
+    Department VARCHAR(4),
+    Branch VARCHAR(3),
+    Salary RAW(128)
 );
 
 CREATE TABLE Branch_1412105
 (
-    BranchID CHAR(3) PRIMARY KEY,
-    BranchName varchar2(50),
-    BranchManager CHAR(15)
+    BranchID VARCHAR(3) PRIMARY KEY,
+    BranchName VARCHAR2(50),
+    BranchManager VARCHAR(15)
 );
 
 CREATE TABLE Department_1412105
 (
-    DepartmentID CHAR(4),
+    DepartmentID VARCHAR(4),
     DepartmentName varchar2(50),
-    DepartmentChief CHAR(15),
+    DepartmentChief VARCHAR(15),
     ElectedDate DATE,
     EmployeeQuantity INT,
-    Branch CHAR(3),
+    Branch VARCHAR(3),
     CONSTRAINT PK_Department PRIMARY KEY (DepartmentID, Branch)
 );
 
 CREATE TABLE Projects_1412105
 (
-    ProjectID CHAR(6) PRIMARY KEY,
-    ProjectName varchar2(100),
-    Fund INT,
-    HoldingDepartment CHAR(4),
-    Branch CHAR(3),
-    ProjectManager CHAR(15)
+    ProjectID VARCHAR(6) PRIMARY KEY,
+    ProjectName VARCHAR2(100),
+    Fund RAW(128),
+    HoldingDepartment VARCHAR(4),
+    Branch VARCHAR(3),
+    ProjectManager VARCHAR(15)
 );
 
 CREATE TABLE Expenditure_1412105
 (
-    ExpenditureID CHAR(7) PRIMARY KEY,
-    ExpenditureName varchar2(100),
-    Amount INT,
-    Projects CHAR(6)
+    ExpenditureID VARCHAR(7) PRIMARY KEY,
+    ExpenditureName VARCHAR2(100),
+    Amount RAW(128),
+    Projects VARCHAR(6)
 );
 
 CREATE TABLE Assignment_1412105
 (
-    Projects CHAR(6),
-    Employee CHAR(15),
-    Position varchar2(20),
-    SuppliedFund INT,
+    Projects VARCHAR(6),
+    Employee VARCHAR(15),
+    Position VARCHAR2(20),
+    SuppliedFund RAW(128),
     CONSTRAINT PK_Assignment PRIMARY KEY(Projects, Employee)
 );
 
@@ -105,61 +106,61 @@ insert into DEPARTMENT_1412105 values ('KH', 'Ke Hoach', NUll,TO_DATE('02022002'
 insert into DEPARTMENT_1412105 values ('NS', 'Nhan Su', NUll, TO_DATE('03032002', 'ddmmyyyy'), 5, 'HCM');
 
 -- Insert EMPLOYEE
-insert into EMPLOYEE_1412105 values ('EM01_1412105', 'Nguyen Van A', 'Ha Noi', '0911384853', 'a@gmail.com', 'KT', 'HN', 1000);
-insert into EMPLOYEE_1412105 values ('EM02_1412105', 'Nguyen Van B', 'Ha Noi', '0934858433', 'a@gmail.com', 'KT', 'HN', 1100);
-insert into EMPLOYEE_1412105 values ('EM03_1412105', 'Nguyen Van C', 'Ha Noi', '0923485243', 'a@gmail.com', 'KT', 'HN', 1400);
-insert into EMPLOYEE_1412105 values ('EM04_1412105', 'Nguyen Van D', 'Ha Noi', '0952429421', 'a@gmail.com', 'KT', 'HN', 1600);
-insert into EMPLOYEE_1412105 values ('EM05_1412105', 'Nguyen Van E', 'Ha Noi', '01234428312', 'a@gmail.com', 'NS', 'HN', 1200);
-insert into EMPLOYEE_1412105 values ('EM06_1412105', 'Nguyen Van F', 'Ha Noi', '0925385282', 'a@gmail.com', 'NS', 'HN', 1200);
-insert into EMPLOYEE_1412105 values ('EM07_1412105', 'Nguyen Van F', 'Ha Noi', '0945928428', 'a@gmail.com', 'NS', 'HN', 1800);
-insert into EMPLOYEE_1412105 values ('EM08_1412105', 'Nguyen Van G', 'Ha Noi', '0922242384', 'a@gmail.com', 'NS', 'HN', 1100);
-insert into EMPLOYEE_1412105 values ('EM09_1412105', 'Nguyen Van H', 'Ha Noi', '01958234234', 'a@gmail.com', 'KH', 'HN', 1000);
-insert into EMPLOYEE_1412105 values ('EM10_1412105', 'Nguyen Van I', 'Ha Noi', '0934242855', 'a@gmail.com', 'KH', 'HN', 1200);
-insert into EMPLOYEE_1412105 values ('EM11_1412105', 'Nguyen Van K', 'Ha Noi', '01238342342', 'a@gmail.com', 'KH', 'HN', 1200);
-insert into EMPLOYEE_1412105 values ('EM12_1412105', 'Nguyen Van F', 'Ha Noi', '01238342342', 'a@gmail.com', 'KH', 'HN', 1200);
+insert into EMPLOYEE_1412105 values ('EM01_1412105', 'Nguyen Van A', 'Ha Noi', '0911384853', 'a@gmail.com', 'KT', 'HN', '435AB5E80F0E2BDF');
+insert into EMPLOYEE_1412105 values ('EM02_1412105', 'Nguyen Van B', 'Ha Noi', '0934858433', 'a@gmail.com', 'KT', 'HN', '616482E675D9601C');
+insert into EMPLOYEE_1412105 values ('EM03_1412105', 'Nguyen Van C', 'Ha Noi', '0923485243', 'a@gmail.com', 'KT', 'HN', '21F423A72D5C0ADC');
+insert into EMPLOYEE_1412105 values ('EM04_1412105', 'Nguyen Van D', 'Ha Noi', '0952429421', 'a@gmail.com', 'KT', 'HN', '92DF28F8CFDC7F10');
+insert into EMPLOYEE_1412105 values ('EM05_1412105', 'Nguyen Van E', 'Ha Noi', '01234428312', 'a@gmail.com', 'NS', 'HN', '92DF28F8CFDC7F10');
+insert into EMPLOYEE_1412105 values ('EM06_1412105', 'Nguyen Van F', 'Ha Noi', '0925385282', 'a@gmail.com', 'NS', 'HN', 'D903A97FA0F91B66');
+insert into EMPLOYEE_1412105 values ('EM07_1412105', 'Nguyen Van F', 'Ha Noi', '0945928428', 'a@gmail.com', 'NS', 'HN', 'C1723429F2DF852C');
+insert into EMPLOYEE_1412105 values ('EM08_1412105', 'Nguyen Van G', 'Ha Noi', '0922242384', 'a@gmail.com', 'NS', 'HN', '34CA7091DDF992EB');
+insert into EMPLOYEE_1412105 values ('EM09_1412105', 'Nguyen Van H', 'Ha Noi', '01958234234', 'a@gmail.com', 'KH', 'HN', 'F464CC1163023B30');
+insert into EMPLOYEE_1412105 values ('EM10_1412105', 'Nguyen Van I', 'Ha Noi', '0934242855', 'a@gmail.com', 'KH', 'HN', 'AD1089E8309D3522');
+insert into EMPLOYEE_1412105 values ('EM11_1412105', 'Nguyen Van K', 'Ha Noi', '01238342342', 'a@gmail.com', 'KH', 'HN', 'AD1089E8309D3522');
+insert into EMPLOYEE_1412105 values ('EM12_1412105', 'Nguyen Van F', 'Ha Noi', '01238342342', 'a@gmail.com', 'KH', 'HN', '21F423A72D5C0ADC');
 
-insert into EMPLOYEE_1412105 values ('EM13_1412105', 'Nguyen Van M', 'Da Nang', '0958828293', 'a@gmail.com', 'KT', 'DN', 1300);
-insert into EMPLOYEE_1412105 values ('EM14_1412105', 'Nguyen Van N', 'Da Nang', '0934284292', 'a@gmail.com', 'KT', 'DN', 1500);
-insert into EMPLOYEE_1412105 values ('EM15_1412105', 'Nguyen Van P', 'Da Nang', '01645932002', 'a@gmail.com', 'KT', 'DN', 1500);
-insert into EMPLOYEE_1412105 values ('EM16_1412105', 'Nguyen Van Q', 'Da Nang', '0912395231', 'a@gmail.com', 'KT', 'DN', 1700);
-insert into EMPLOYEE_1412105 values ('EM17_1412105', 'Nguyen Van X', 'Da Nang', '0923481113', 'a@gmail.com', 'NS', 'DN', 1600);
-insert into EMPLOYEE_1412105 values ('EM18_1412105', 'Nguyen Van Y', 'Da Nang', '0953428810', 'a@gmail.com', 'NS', 'DN', 1100);
-insert into EMPLOYEE_1412105 values ('EM19_1412105', 'Nguyen Van Z', 'Da Nang', '01994248191', 'a@gmail.com', 'NS', 'DN', 1900);
-insert into EMPLOYEE_1412105 values ('EM20_1412105', 'Nguyen Van KA', 'Da Nang', '01679523222', 'a@gmail.com', 'NS', 'DN', 1900);
-insert into EMPLOYEE_1412105 values ('EM21_1412105', 'Nguyen Van YN', 'Da Nang', '0911194215', 'a@gmail.com', 'KH', 'DN', 900);
-insert into EMPLOYEE_1412105 values ('EM22_1412105', 'Nguyen Van TB', 'Da Nang', '0993241344', 'a@gmail.com', 'KH', 'DN', 1000);
-insert into EMPLOYEE_1412105 values ('EM23_1412105', 'Nguyen Van IU', 'Da Nang', '0985925200', 'a@gmail.com', 'KH', 'DN', 700);
-insert into EMPLOYEE_1412105 values ('EM24_1412105', 'Nguyen Van UD', 'Da Nang', '0969345821', 'a@gmail.com', 'KH', 'DN', 1300);
+insert into EMPLOYEE_1412105 values ('EM13_1412105', 'Nguyen Van M', 'Da Nang', '0958828293', 'a@gmail.com', 'KT', 'DN', '40E06E94FBB172C9');
+insert into EMPLOYEE_1412105 values ('EM14_1412105', 'Nguyen Van N', 'Da Nang', '0934284292', 'a@gmail.com', 'KT', 'DN', '646F9B754860C65E');
+insert into EMPLOYEE_1412105 values ('EM15_1412105', 'Nguyen Van P', 'Da Nang', '0684598495', 'a@gmail.com', 'KT', 'DN', '646F9B754860C65E');
+insert into EMPLOYEE_1412105 values ('EM16_1412105', 'Nguyen Van Q', 'Da Nang', '0912395231', 'a@gmail.com', 'KT', 'DN', '37A1CF2146A388BE');
+insert into EMPLOYEE_1412105 values ('EM17_1412105', 'Nguyen Van X', 'Da Nang', '0923481113', 'a@gmail.com', 'NS', 'DN', 'E7EC136704C2FF92');
+insert into EMPLOYEE_1412105 values ('EM18_1412105', 'Nguyen Van Y', 'Da Nang', '0953428810', 'a@gmail.com', 'NS', 'DN', '34CA7091DDF992EB');
+insert into EMPLOYEE_1412105 values ('EM19_1412105', 'Nguyen Van Z', 'Da Nang', '01994248191', 'a@gmail.com', 'NS', 'DN', '26EF29F2BE6DF727');
+insert into EMPLOYEE_1412105 values ('EM20_1412105', 'Nguyen Van KA', 'Da Nang', '01679523222', 'a@gmail.com', 'NS', 'DN', 'F330CB2A34C11F88');
+insert into EMPLOYEE_1412105 values ('EM21_1412105', 'Nguyen Van YN', 'Da Nang', '0911194215', 'a@gmail.com', 'KH', 'DN', '4DE455DFEDA836EB');
+insert into EMPLOYEE_1412105 values ('EM22_1412105', 'Nguyen Van TB', 'Da Nang', '0993241344', 'a@gmail.com', 'KH', 'DN', '538FB96375559E3C');
+insert into EMPLOYEE_1412105 values ('EM23_1412105', 'Nguyen Van IU', 'Da Nang', '013584854', 'a@gmail.com', 'KH', 'DN', '7DC1BCB89851B7DB');
+insert into EMPLOYEE_1412105 values ('EM24_1412105', 'Nguyen Van UD', 'Da Nang', '0969345821', 'a@gmail.com', 'KH', 'DN', '67B36EF4D4E85B13');
 
-insert into EMPLOYEE_1412105 values ('EM25_1412105', 'Nguyen Van XA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KT', 'HCM', 1000);
-insert into EMPLOYEE_1412105 values ('EM26_1412105', 'Nguyen Van CA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KT', 'HCM', 1400);
-insert into EMPLOYEE_1412105 values ('EM27_1412105', 'Nguyen Van EA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KT', 'HCM', 1200);
-insert into EMPLOYEE_1412105 values ('EM28_1412105', 'Nguyen Van DA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KT', 'HCM', 1100);
-insert into EMPLOYEE_1412105 values ('EM29_1412105', 'Nguyen Van RA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'NS', 'HCM', 1600);
-insert into EMPLOYEE_1412105 values ('EM30_1412105', 'Nguyen Van GA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'NS', 'HCM', 1500);
-insert into EMPLOYEE_1412105 values ('EM31_1412105', 'Nguyen Van WA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'NS', 'HCM', 1600);
-insert into EMPLOYEE_1412105 values ('EM32_1412105', 'Nguyen Van HA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'NS', 'HCM', 1900);
-insert into EMPLOYEE_1412105 values ('EM33_1412105', 'Nguyen Van QA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KH', 'HCM', 1500);
-insert into EMPLOYEE_1412105 values ('EM34_1412105', 'Nguyen Van HA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KH', 'HCM', 1000);
-insert into EMPLOYEE_1412105 values ('EM35_1412105', 'Nguyen Van BA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KH', 'HCM', 900);
-insert into EMPLOYEE_1412105 values ('EM36_1412105', 'Nguyen Van RA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KH', 'HCM', 700);
+insert into EMPLOYEE_1412105 values ('EM25_1412105', 'Nguyen Van XA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KT', 'HCM', 'ED2B0639746D5388');
+insert into EMPLOYEE_1412105 values ('EM26_1412105', 'Nguyen Van CA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KT', 'HCM', 'NCD5E790FD1F9F497');
+insert into EMPLOYEE_1412105 values ('EM27_1412105', 'Nguyen Van EA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KT', 'HCM', '8C728CBC07DF0AA3');
+insert into EMPLOYEE_1412105 values ('EM28_1412105', 'Nguyen Van DA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KT', 'HCM', 'E169E91AC351CA89');
+insert into EMPLOYEE_1412105 values ('EM29_1412105', 'Nguyen Van RA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'NS', 'HCM', '64B7D8A7F123C4E2');
+insert into EMPLOYEE_1412105 values ('EM30_1412105', 'Nguyen Van GA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'NS', 'HCM', '1EB405A164826BCE');
+insert into EMPLOYEE_1412105 values ('EM31_1412105', 'Nguyen Van WA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'NS', 'HCM', 'CD0605A58EEF0595');
+insert into EMPLOYEE_1412105 values ('EM32_1412105', 'Nguyen Van HA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'NS', 'HCM', '96272AA1A6F3E0A6');
+insert into EMPLOYEE_1412105 values ('EM33_1412105', 'Nguyen Van QA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KH', 'HCM', 'A58828A8A1C3D091');
+insert into EMPLOYEE_1412105 values ('EM34_1412105', 'Nguyen Van HA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KH', 'HCM', 'ED2B0639746D5388');
+insert into EMPLOYEE_1412105 values ('EM35_1412105', 'Nguyen Van BA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KH', 'HCM', '9DD8B30678E60A31');
+insert into EMPLOYEE_1412105 values ('EM36_1412105', 'Nguyen Van RA', 'Ho Chi Minh', '0911384853', 'a@gmail.com', 'KH', 'HCM', '96272AA1A6F3E0A6');
 
 --Insert PROJECT
-insert into PROJECTS_1412105 values ('2017A1', 'Runing tracking',3500000,'KH','HN','EM09_1412105');
-insert into PROJECTS_1412105 values ('2017A2', 'Share accidents application',2300000,'KH','HCM','EM33_1412105');
-insert into PROJECTS_1412105 values ('2017A3', 'Cloud application',1500000,'KH','DN', 'EM21_1412105');
+insert into PROJECTS_1412105 values ('2017A1', 'Runing tracking',NULL,'KH','HN','EM09_1412105');
+insert into PROJECTS_1412105 values ('2017A2', 'Share accidents application',NULL,'KH','HCM','EM33_1412105');
+insert into PROJECTS_1412105 values ('2017A3', 'Cloud application',NULL,'KH','DN', 'EM21_1412105');
 insert into PROJECTS_1412105 values ('2017B1', 'Salary increase',NULL,'NS','HN','EM07_1412105');
-insert into PROJECTS_1412105 values ('2017B2', 'Staff cuts off',55000,'NS','DN','EM18_1412105');
+insert into PROJECTS_1412105 values ('2017B2', 'Staff cuts off',NULL,'NS','DN','EM18_1412105');
 insert into PROJECTS_1412105 values ('2017C1', 'Report 2017A1 Project',NULL,'KT','HN','EM25_1412105');
 insert into PROJECTS_1412105 values ('2017C2', 'Report 2017A3 Project',NULL,'KT','DN','EM14_1412105');
-insert into PROJECTS_1412105 values ('2017C3', 'Buy machine in quarter 2',2255000,'KT','HCM','EM26_1412105');
+insert into PROJECTS_1412105 values ('2017C3', 'Buy machine in quarter 2',NULL,'KT','HCM','EM26_1412105');
 
 --Insert EXPENDITURE
-insert into EXPENDITURE_1412105 values ('B2017A1','Funding for Running tracking Project',3500000,'2017A1');
-insert into EXPENDITURE_1412105 values ('B2017A2','Funding for Share accidents application',2300000,'2017A2');
-insert into EXPENDITURE_1412105 values ('B2017A3','Funding for Cloud application',1500000,'2017A3');
-insert into EXPENDITURE_1412105 values ('B2017B2','Vacation allowance for Staff cuts off',55000,'2017B2');
-insert into EXPENDITURE_1412105 values ('B2017C3','Funding for buy machine in quarter 2',2255000,'2017B2');
+insert into EXPENDITURE_1412105 values ('B2017A1','Funding for Running tracking Project',NULL,'2017A1');
+insert into EXPENDITURE_1412105 values ('B2017A2','Funding for Share accidents application',NULL,'2017A2');
+insert into EXPENDITURE_1412105 values ('B2017A3','Funding for Cloud application',NULL,'2017A3');
+insert into EXPENDITURE_1412105 values ('B2017B2','Vacation allowance for Staff cuts off',NULL,'2017B2');
+insert into EXPENDITURE_1412105 values ('B2017C3','Funding for buy machine in quarter 2',NULL,'2017B2');
 
 --Insert ASSIGNMENT
 insert into ASSIGNMENT_1412105 values ('2017A1','EM10_1412105', NULL, NULL);
